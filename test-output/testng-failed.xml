@@ -5,8 +5,8 @@
     <classes>
       <class name="org.payconiq.test.BookingApiTest">
         <methods>
+          <include name="testDeleteEndpoint"/>
           <include name="setup"/>
-          <include name="testGetBookingById"/>
         </methods>
       </class> <!-- org.payconiq.test.BookingApiTest -->
     </classes>

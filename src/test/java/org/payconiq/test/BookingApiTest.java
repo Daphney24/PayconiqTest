@@ -2,6 +2,8 @@ package org.payconiq.test;
 
 import static io.restassured.RestAssured.given;
 
+import java.util.Properties;
+
 import org.payconiq.test.model.Booking;
 import org.payconiq.test.model.BookingDates;
 import org.testng.annotations.BeforeClass;
@@ -14,14 +16,20 @@ import io.restassured.specification.RequestSpecification;
 public class BookingApiTest {
 
 	private static RequestSpecification requestSpec;
-
+	private static Properties prop;
+	
+	private static final int SUCCESS_STATUS_CODE = 200;
+	private static final int CREATED_STATUS_CODE = 201;
+	
 	@BeforeClass
 	public void setup()  {
 		BaseTest baseTest = new BaseTest();
-		String url = baseTest.getProp().getProperty("api.baseUri");
+		prop = baseTest.getProp();
+		String url = prop.getProperty("api.baseUri");
+		String basePath = prop.getProperty("api.basePath");
 		requestSpec = new RequestSpecBuilder()
 				.setBaseUri(url)
-				.setBasePath("/booking")
+				.setBasePath(basePath)
 				.setContentType(ContentType.JSON)
 				.build();			
 	}
@@ -40,7 +48,7 @@ public class BookingApiTest {
 				post().
 		then().
 			assertThat().
-			statusCode(200);				
+			statusCode(SUCCESS_STATUS_CODE);				
 	}
 	
 	@Test
@@ -52,7 +60,23 @@ public class BookingApiTest {
 			    get("/1").
 	    then().
 			    assertThat().
-			    statusCode(200);
+			    statusCode(SUCCESS_STATUS_CODE);
+	}
+	
+	@Test
+	public void testDeleteEndpoint() {
+		
+		given().
+			  	spec(requestSpec).
+			  	auth().
+			  	preemptive()
+			  	.basic(prop.getProperty("username"),prop.getProperty("password")).
+	   and().
+	   		  delete("/25").
+	   then().
+	   		  assertThat().
+	   		  statusCode(CREATED_STATUS_CODE);
+	   
 	}
 	
 	@Test
