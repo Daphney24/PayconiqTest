@@ -1,4 +1,4 @@
-package org.payconiq.test;
+package org.api.test;
 
 import static io.restassured.RestAssured.given;
 
@@ -6,19 +6,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+import org.base.test.BaseTest;
 import org.json.simple.JSONObject;
-import org.payconiq.test.model.Booking;
-import org.payconiq.test.model.BookingDates;
+import org.model.test.Booking;
+import org.model.test.BookingDates;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import utils.ExtentReportListener;
 
-public class BookingApiTest {
+@Listeners(ExtentReportListener.class)
+public class BookingApiTest extends ExtentReportListener{
 
 	private static RequestSpecification requestSpec;
 	private static Properties prop;
@@ -38,7 +44,7 @@ public class BookingApiTest {
 				.setBaseUri(url)
 				.setBasePath(basePath)
 				.setContentType(ContentType.JSON)
-				.build();			
+				.build();	
 	}
 
 	@Test(priority = 1)
@@ -59,6 +65,17 @@ public class BookingApiTest {
 				extract().
 				path("bookingid");
 		
+//		try {
+//			Assert.assertEquals(SUCCESS_STATUS_CODE, response.getStatusCode());
+//			test.log(LogStatus.PASS, "Successfully validated status code:: " + response.getStatusCode());
+//		}catch (AssertionError e) {
+//			test.log(LogStatus.FAIL, "Expected status code is:: "+SUCCESS_STATUS_CODE+", instead got:: "+ response.getStatusCode());
+//			Assert.fail();
+//		}catch(Exception e) {
+//			test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
+//			Assert.fail();
+//		}
+//		
 		Assert.assertNotNull(createdBookingid, "Booking id not found");
 	}
 	

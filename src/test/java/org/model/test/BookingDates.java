@@ -1,4 +1,4 @@
-package org.payconiq.test.model;
+package org.model.test;
 
 public class BookingDates {
 	private String checkin;

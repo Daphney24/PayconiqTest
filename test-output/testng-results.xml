@@ -2,44 +2,44 @@
 <testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-09-05T23:07:58 CEST" name="Default suite" finished-at="2021-09-05T23:08:05 CEST" duration-ms="7145">
+  <suite started-at="2021-09-05T21:57:00Z" name="Default suite" finished-at="2021-09-05T21:57:06Z" duration-ms="6124">
     <groups>
     </groups>
-    <test started-at="2021-09-05T23:07:58 CEST" name="Default test" finished-at="2021-09-05T23:08:05 CEST" duration-ms="7145">
-      <class name="org.payconiq.test.BookingApiTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:07:58 CEST" name="setup" finished-at="2021-09-05T23:07:58 CEST" duration-ms="799" status="PASS">
+    <test started-at="2021-09-05T21:57:00Z" name="Default test" finished-at="2021-09-05T21:57:06Z" duration-ms="6124">
+      <class name="org.api.test.BookingApiTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:00Z" name="setup" finished-at="2021-09-05T21:57:01Z" duration-ms="516" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testCreateBookingEndpoint()[pri:1, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:07:58 CEST" name="testCreateBookingEndpoint" finished-at="2021-09-05T23:08:01 CEST" duration-ms="2683" status="PASS">
+        <test-method signature="testCreateBookingEndpoint()[pri:1, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:01Z" name="testCreateBookingEndpoint" finished-at="2021-09-05T21:57:03Z" duration-ms="1845" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateBookingEndpoint -->
-        <test-method signature="testGetBookingByIdEndpoint()[pri:2, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:08:01 CEST" name="testGetBookingByIdEndpoint" finished-at="2021-09-05T23:08:02 CEST" duration-ms="628" status="PASS">
+        <test-method signature="testGetBookingByIdEndpoint()[pri:2, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:03Z" name="testGetBookingByIdEndpoint" finished-at="2021-09-05T21:57:03Z" duration-ms="648" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetBookingByIdEndpoint -->
-        <test-method signature="testGetBookingByIdResponse()[pri:3, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:08:02 CEST" name="testGetBookingByIdResponse" finished-at="2021-09-05T23:08:02 CEST" duration-ms="636" status="PASS">
+        <test-method signature="testGetBookingByIdResponse()[pri:3, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:03Z" name="testGetBookingByIdResponse" finished-at="2021-09-05T21:57:04Z" duration-ms="655" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetBookingByIdResponse -->
-        <test-method signature="testPartialUpdateBooking()[pri:4, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:08:02 CEST" name="testPartialUpdateBooking" finished-at="2021-09-05T23:08:03 CEST" duration-ms="617" status="PASS">
+        <test-method signature="testPartialUpdateBooking()[pri:4, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:04Z" name="testPartialUpdateBooking" finished-at="2021-09-05T21:57:04Z" duration-ms="517" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPartialUpdateBooking -->
-        <test-method signature="testGetBookingIdswithoutParameters()[pri:5, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:08:03 CEST" name="testGetBookingIdswithoutParameters" finished-at="2021-09-05T23:08:04 CEST" duration-ms="580" status="PASS">
+        <test-method signature="testGetBookingIdswithoutParameters()[pri:5, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:04Z" name="testGetBookingIdswithoutParameters" finished-at="2021-09-05T21:57:05Z" duration-ms="527" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetBookingIdswithoutParameters -->
-        <test-method signature="testGetBookingIdswithParameters()[pri:6, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:08:04 CEST" name="testGetBookingIdswithParameters" finished-at="2021-09-05T23:08:04 CEST" duration-ms="583" status="PASS">
+        <test-method signature="testGetBookingIdswithParameters()[pri:6, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:05Z" name="testGetBookingIdswithParameters" finished-at="2021-09-05T21:57:06Z" duration-ms="655" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetBookingIdswithParameters -->
-        <test-method signature="testDeleteEndpoint()[pri:7, instance:org.payconiq.test.BookingApiTest@3e11f9e9]" started-at="2021-09-05T23:08:04 CEST" name="testDeleteEndpoint" finished-at="2021-09-05T23:08:05 CEST" duration-ms="579" status="PASS">
+        <test-method signature="testDeleteEndpoint()[pri:7, instance:org.api.test.BookingApiTest@51133c06]" started-at="2021-09-05T21:57:06Z" name="testDeleteEndpoint" finished-at="2021-09-05T21:57:06Z" duration-ms="609" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDeleteEndpoint -->
-      </class> <!-- org.payconiq.test.BookingApiTest -->
+      </class> <!-- org.api.test.BookingApiTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

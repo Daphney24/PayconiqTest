@@ -1,4 +1,4 @@
-package org.payconiq.test;
+package org.base.test;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
