@@ -1,8 +1,6 @@
 # PayconiqAssessment
 
-
-# Tasks
-Tech Stack: Java (or Kotlin), Junit, Maven
+Tech Stack: Java , Junit, Maven
 
 In this assignment, you are responsible for writing automated API tests for Hotel Booking Endpoints.
 
