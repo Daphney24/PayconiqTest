@@ -48,6 +48,11 @@ public class Booking {
 	public String getAdditionalneeds() {
 		return additionalneeds;
 	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	
 	
 	
 

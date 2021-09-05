@@ -5,8 +5,8 @@
     <classes>
       <class name="org.payconiq.test.BookingApiTest">
         <methods>
+          <include name="testGetBookingIdswithParameters"/>
           <include name="setup"/>
-          <include name="testGetBookingByIdResponse"/>
         </methods>
       </class> <!-- org.payconiq.test.BookingApiTest -->
     </classes>

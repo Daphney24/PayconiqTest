@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\abhas\AppData\Local\Temp\testng-eclipse--1296216096\testng-customsuite.xml</span>
+                    <span>C:\Users\abhas\AppData\Local\Temp\testng-eclipse--1923968199\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods,   5 passed</span>
+                    <span class="method-stats">7 methods,   7 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -120,6 +120,16 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="org.payconiq.test.BookingApiTest" class="method navigator-link" hash-for-method="testGetBookingByIdResponse">testGetBookingByIdResponse</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="org.payconiq.test.BookingApiTest" class="method navigator-link" hash-for-method="testGetBookingIdswithParameters">testGetBookingIdswithParameters</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="org.payconiq.test.BookingApiTest" class="method navigator-link" hash-for-method="testGetBookingIdswithoutParameters">testGetBookingIdswithoutParameters</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -175,6 +185,20 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
+                  <a name="testGetBookingIdswithParameters">
+                  </a> <!-- testGetBookingIdswithParameters -->
+                  <span class="method-name">testGetBookingIdswithParameters</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testGetBookingIdswithoutParameters">
+                  </a> <!-- testGetBookingIdswithoutParameters -->
+                  <span class="method-name">testGetBookingIdswithoutParameters</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="testPartialUpdateBooking">
                   </a> <!-- testPartialUpdateBooking -->
                   <span class="method-name">testPartialUpdateBooking</span>
@@ -185,7 +209,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\abhas\AppData\Local\Temp\testng-eclipse--1296216096\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\abhas\AppData\Local\Temp\testng-eclipse--1923968199\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -234,32 +258,40 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(5);
+data.addRows(7);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testCreateBookingEndpoint')
 data.setCell(0, 2, 'org.payconiq.test.BookingApiTest')
-data.setCell(0, 3, 1642);
+data.setCell(0, 3, 2683);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testGetBookingByIdEndpoint')
+data.setCell(1, 1, 'testGetBookingByIdResponse')
 data.setCell(1, 2, 'org.payconiq.test.BookingApiTest')
-data.setCell(1, 3, 606);
+data.setCell(1, 3, 636);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testGetBookingByIdResponse')
+data.setCell(2, 1, 'testGetBookingByIdEndpoint')
 data.setCell(2, 2, 'org.payconiq.test.BookingApiTest')
-data.setCell(2, 3, 604);
+data.setCell(2, 3, 628);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'testPartialUpdateBooking')
 data.setCell(3, 2, 'org.payconiq.test.BookingApiTest')
-data.setCell(3, 3, 598);
+data.setCell(3, 3, 617);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'testDeleteEndpoint')
+data.setCell(4, 1, 'testGetBookingIdswithParameters')
 data.setCell(4, 2, 'org.payconiq.test.BookingApiTest')
-data.setCell(4, 3, 567);
+data.setCell(4, 3, 583);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'testGetBookingIdswithoutParameters')
+data.setCell(5, 2, 'org.payconiq.test.BookingApiTest')
+data.setCell(5, 3, 580);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'testDeleteEndpoint')
+data.setCell(6, 2, 'org.payconiq.test.BookingApiTest')
+data.setCell(6, 3, 579);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 4 seconds</span>
+              <span class="suite-total-time">Total running time: 6 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -292,23 +324,31 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">testCreateBookingEndpoint</span>
-                <span class="method-start">471 ms</span>
+                <span class="method-start">810 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testGetBookingByIdEndpoint</span>
-                <span class="method-start">2116 ms</span>
+                <span class="method-start">3497 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testGetBookingByIdResponse</span>
-                <span class="method-start">2722 ms</span>
+                <span class="method-start">4126 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testPartialUpdateBooking</span>
-                <span class="method-start">3327 ms</span>
+                <span class="method-start">4763 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGetBookingIdswithoutParameters</span>
+                <span class="method-start">5381 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">testGetBookingIdswithParameters</span>
+                <span class="method-start">5962 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">testDeleteEndpoint</span>
-                <span class="method-start">3926 ms</span>
+                <span class="method-start">6545 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -2,7 +2,8 @@ package org.payconiq.test;
 
 import static io.restassured.RestAssured.given;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 import org.json.simple.JSONObject;
@@ -53,13 +54,12 @@ public class BookingApiTest {
 		when().
 				post().
 		then().
-			assertThat().
-			statusCode(SUCCESS_STATUS_CODE).
-			extract().
-			path("bookingid");
+				assertThat().
+				statusCode(SUCCESS_STATUS_CODE).
+				extract().
+				path("bookingid");
 		
 		Assert.assertNotNull(createdBookingid, "Booking id not found");
-		System.out.println(createdBookingid);
 	}
 	
 	@Test(priority = 2)
@@ -86,7 +86,8 @@ public class BookingApiTest {
 	    		extract().
 	    		as(Booking.class);
 		
-		Assert.assertEquals(booking.getFirstname(), createdBooking.getFirstname());			    
+		Assert.assertEquals(booking.getFirstname(), createdBooking.getFirstname());		
+		
 	}
 	
 	@Test(priority =4)
@@ -112,9 +113,48 @@ public class BookingApiTest {
 	    		as(Booking.class);
 		
 		Assert.assertEquals(updatedBooking.getLastname(), newLastName);
+		createdBooking = updatedBooking;
 	}
 	
 	@Test(priority = 5)
+	public void testGetBookingIdswithoutParameters() {
+		
+		
+		Response response = given().
+				spec(requestSpec).
+		and().
+	    		get().
+	    then().
+	    		extract().
+	    		response();
+		
+		Assert.assertEquals(SUCCESS_STATUS_CODE, response.getStatusCode());
+		List<HashMap<String, Integer>> bookingids = response.jsonPath().getList("$");
+		Assert.assertNotNull(bookingids, "Booking id not returned");		
+		
+	}
+
+	@Test(priority = 6)
+	public void testGetBookingIdswithParameters() {
+		
+		Response response = given().
+				spec(requestSpec).
+				queryParam("firstname", createdBooking.getFirstname()).
+				queryParam("lastname", createdBooking.getLastname()).
+		and().
+	    		get().
+	    then().
+	    		extract().
+	    		response();
+		
+		Assert.assertEquals(SUCCESS_STATUS_CODE, response.getStatusCode());
+		
+		List<HashMap<String, Integer>> bookingids = response.jsonPath().getList("$");
+		Integer actualBookingId = bookingids.get(0).get("bookingid");
+		Assert.assertEquals(actualBookingId, createdBookingid);		
+	}
+	
+	@Test(priority = 7)
 	public void testDeleteEndpoint() {
 		
 	   given().
@@ -128,5 +168,5 @@ public class BookingApiTest {
 	   		  	assertThat().
 	   		  	statusCode(CREATED_STATUS_CODE);
 	}
-
+	
 }
