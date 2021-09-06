@@ -10,6 +10,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class ExtentReportListener  implements ITestListener{
+
 	protected static ExtentReports reports;
 	protected static ExtentTest test;
 
@@ -34,21 +35,16 @@ public class ExtentReportListener  implements ITestListener{
 
 	private static String getResultPath() {
 
-		resultpath = "test";//new SimpleDateFormat("yyyy-MM-dd hh-mm.ss").format(new Date());
+		resultpath = "test";
 		if (!new File(resultpath).isDirectory()) {
 			new File(resultpath);
 		}
 		return resultpath;
 	}
 
-	String ReportLocation = "test-output/Report/" + resultpath + "/";
-
 	public void onTestStart(ITestResult result) {
-
 		test = reports.startTest(result.getMethod().getMethodName());
 		test.log(LogStatus.INFO, result.getMethod().getMethodName());
-		System.out.println(result.getTestClass().getTestName());
-		System.out.println(result.getMethod().getMethodName());
 	}
 
 	public void onTestSuccess(ITestResult result) {
@@ -67,21 +63,18 @@ public class ExtentReportListener  implements ITestListener{
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void onStart(ITestContext context) {
-		System.out.println(ReportLocation + "  ReportLocation");
-		reports = new ExtentReports(ReportLocation + "ExtentReport.html");
+		String reportLocation = "test-output/Report/" + resultpath + "/";
+		System.out.println("ReportLocation :: "+reportLocation);
+		reports = new ExtentReports(reportLocation + "ExtentReport.html");
 		test = reports.startTest("");
-
 	}
 
 	public void onFinish(ITestContext context) {
 		reports.endTest(test);
 		reports.flush();
-
 	}
-	
+
 }

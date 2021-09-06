@@ -9,7 +9,6 @@ import org.json.simple.JSONObject;
 import org.model.test.Booking;
 import org.model.test.BookingDates;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -63,18 +62,18 @@ public class BookingApiTest extends ExtentReportListener{
 				
 		try {
 			Assert.assertEquals(SUCCESS_STATUS_CODE, response.getStatusCode());
-			//test.log(LogStatus.PASS, "Succcessfully validated status code:: " + response.getStatusCode());
+			test.log(LogStatus.PASS, "Succcessfully validated status code:: " + response.getStatusCode());
 			createdBookingid = response.path("bookingid");
 		}catch (AssertionError e) {
-			//test.log(LogStatus.FAIL, "Incorrect status code:: "+ response.getStatusCode()+" is returned with response :: "+response.prettyPrint());
+			test.log(LogStatus.FAIL, "Incorrect status code:: "+ response.getStatusCode()+" is returned with response :: "+response.prettyPrint());
 			Assert.fail();
 		}catch(Exception e) {
-			//test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
+			test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
 			Assert.fail();
 		}
 	}
 	
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void testGetBookingByIdEndpoint() {
 		
 		Response response = given().
@@ -98,7 +97,7 @@ public class BookingApiTest extends ExtentReportListener{
 		}
 	}
 
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void testGetBookingByIdResponse() {
 		
 		Booking booking =given().
@@ -110,11 +109,20 @@ public class BookingApiTest extends ExtentReportListener{
 	    		extract().
 	    		as(Booking.class);
 		
-		Assert.assertEquals(booking.getFirstname(), createdBooking.getFirstname());		
-		
+		try {
+			Assert.assertEquals(booking.getFirstname(), createdBooking.getFirstname());		
+			test.log(LogStatus.PASS, "Succcessfully validated firstname ");
+		}catch (AssertionError e) {
+			test.log(LogStatus.FAIL, "Expected firstname :: "+booking.getFirstname()+" got :: "+createdBooking.getFirstname());
+			test.log(LogStatus.FAIL, "Failure logs are:: "+ e.fillInStackTrace());
+			Assert.fail();
+		}catch(Exception e) {
+			test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
+			Assert.fail();
+		}
 	}
 	
-	//@Test(priority =4)
+	@Test(priority = 4)
 	public void testPartialUpdateBooking() {
 		
 		String newLastName = "dave";
@@ -131,45 +139,48 @@ public class BookingApiTest extends ExtentReportListener{
 		when().	
 	    	 	patch("/{bookingId}", createdBookingid).
 	    then().
-	    		assertThat().
-	    		statusCode(SUCCESS_STATUS_CODE).
 	    		extract().
 	    		as(Booking.class);
 		
-		Assert.assertEquals(updatedBooking.getLastname(), newLastName);
-		createdBooking = updatedBooking;
+		try {
+			Assert.assertEquals(updatedBooking.getLastname(), newLastName);
+			createdBooking = updatedBooking;
+			test.log(LogStatus.PASS, "Succcessfully updated the lastname");
+		}catch (AssertionError e) {
+			test.log(LogStatus.FAIL, "Test Assertion failed,  logs are:: "+ e.fillInStackTrace());
+			Assert.fail();
+		}catch(Exception e) {
+			test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
+			Assert.fail();
+		}		
 	}
 	
-	//@Test(priority = 5)
+	@Test(priority = 5)
 	public void testGetBookingIdswithoutParameters() {
 		
-		
-		Response response = given().
+	Response response = given().
 				spec(requestSpec).
 		and().
 	    		get().
 	    then().
 	    		extract().
-	    		response();
-		
+	    		response();		
+	
 		try {
 			Assert.assertEquals(SUCCESS_STATUS_CODE, response.getStatusCode());
-			test.log(LogStatus.PASS, "Succcessfully validated status code:: " + response.getStatusCode());
+			List<HashMap<String, Integer>> bookingids = response.jsonPath().getList("$");
+			Assert.assertNotNull(bookingids, "Booking id not returned");	
+			test.log(LogStatus.PASS, "Succcessfully validated status code:: " + response.getStatusCode() +" and bookingids");
 		}catch (AssertionError e) {
-			test.log(LogStatus.FAIL, "Expected status code is:: "+SUCCESS_STATUS_CODE+", instead got:: "+ response.getStatusCode());
-			test.log(LogStatus.FAIL, "Failure logs are:: "+ e.fillInStackTrace());
+			test.log(LogStatus.FAIL, "Test Assertion failed,  logs are:: "+ e.fillInStackTrace());
 			Assert.fail();
 		}catch(Exception e) {
 			test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
 			Assert.fail();
-		}
-		
-		List<HashMap<String, Integer>> bookingids = response.jsonPath().getList("$");
-		Assert.assertNotNull(bookingids, "Booking id not returned");		
-		
+		}				
 	}
 
-	//@Test(priority = 6)
+	@Test(priority = 6)
 	public void testGetBookingIdswithParameters() {
 		
 		Response response = given().
@@ -180,26 +191,24 @@ public class BookingApiTest extends ExtentReportListener{
 	    		get().
 	    then().
 	    		extract().
-	    		response();
+	    		response();	
 		
 		try {
 			Assert.assertEquals(SUCCESS_STATUS_CODE, response.getStatusCode());
-			test.log(LogStatus.PASS, "Succcessfully validated status code:: " + response.getStatusCode());
+			List<HashMap<String, Integer>> bookingids = response.jsonPath().getList("$");
+			Integer actualBookingId = bookingids.get(0).get("bookingid");
+			Assert.assertEquals(actualBookingId, createdBookingid);	
+			test.log(LogStatus.PASS, "Succcessfully validated status code:: " + response.getStatusCode()+" and bookingids");
 		}catch (AssertionError e) {
-			test.log(LogStatus.FAIL, "Expected status code is:: "+SUCCESS_STATUS_CODE+", instead got:: "+ response.getStatusCode());
-			test.log(LogStatus.FAIL, "Failure logs are:: "+ e.fillInStackTrace());
+			test.log(LogStatus.FAIL, "Test Assertion failed,  logs are:: "+ e.fillInStackTrace());
 			Assert.fail();
 		}catch(Exception e) {
 			test.log(LogStatus.FAIL,"Error thrown is: "+e.fillInStackTrace());
 			Assert.fail();
-		}
-		
-		List<HashMap<String, Integer>> bookingids = response.jsonPath().getList("$");
-		Integer actualBookingId = bookingids.get(0).get("bookingid");
-		Assert.assertEquals(actualBookingId, createdBookingid);		
+		}	
 	}
 	
-	//@Test(priority = 7)
+	@Test(priority = 7)
 	public void testDeleteEndpoint() {
 		
 		Response response = given().
