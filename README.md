@@ -20,7 +20,7 @@ Framework Architecture
     PayconiqAssessment
 	   |
        |_src/main/java
-       |  |_org.vanmoof.test
+       |  |_org.payconiq.test
        |  |  |_BaseTest.java   
        |  |_utils
        |  |  |_ExtentReportListener.java
