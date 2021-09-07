@@ -70,6 +70,6 @@ mvn test
 	
 ### Reporters
 	
-Once you ran your tests you can generate the reports Extent Reports to communicate pass/failure.
+Once you run the tests the reports will be generated in Extent Reports format to communicate pass/failure.It also includes the default HTML reports as well.
 
-_Note: To look at the results in IDE, open the folder test-output/Report/test/ExtentReport.html 
+Note: To look at the results in IDE, open the folder test-output/Report/test/ExtentReport.html 
