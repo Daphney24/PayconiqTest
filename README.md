@@ -27,9 +27,9 @@ Framework Architecture
 	   |_src/main/resources
        |  |_config.properties
 	   |_src/test/java
-       |  |_org.payconiq.test
+       |  |_org.api.test
 	   |  |  |_BookingApiTest.java
-       |  |_org.payconiq.test.model
+       |  |_org.model.test
        |  |  |_Booking.java
        |  |  |_BookingDates.java
 
